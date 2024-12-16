@@ -1,0 +1,23 @@
+import datetime
+
+def is_working_day(check_date, start_date, work_days, rest_days):
+
+    days_passed = (check_date - start_date).days
+    cycle_length = work_days + rest_days
+    cycle_position = days_passed % cycle_length
+    return cycle_position < work_days
+
+start_date = datetime.date(2024, 7, 17)
+
+year = int(input("Въведете година: "))
+month = int(input("Въведете месец: "))
+day = int(input("Въведете ден: "))
+check_date = datetime.date(year, month, day)
+
+work_days = 2
+rest_days = 2
+
+if is_working_day(check_date, start_date, work_days, rest_days):
+    print(f"{check_date} е работен ден.")
+else:
+    print(f"{check_date} е почивен ден.")
